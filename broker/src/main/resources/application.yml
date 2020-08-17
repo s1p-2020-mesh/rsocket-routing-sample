@@ -17,8 +17,8 @@ io.rsocket.routing.broker:
   cluster.port: 7003
   brokers:
     - cluster:
-        host: localhost
+        host: ${BROKER_HOST:-localhost}
         port: 7002
       proxy:
-        host: localhost
+        host: ${BROKER_HOST:-localhost}
         port: 8002
