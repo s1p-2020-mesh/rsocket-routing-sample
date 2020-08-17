@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: broker
+spec:
+  hosts:
+  - "rsocket-broker.marygabry.name"
+  gateways:
+  - broker
+  tcp:
+  - match:
+    - port: 8002
+    route:
+    - destination:
+        port:
+          number: 8002
+        host: broker

@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: broker
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 8002
+      name: http
+      protocol: TCP
+    hosts:
+    - "rsocket-broker.marygabry.name"
+
