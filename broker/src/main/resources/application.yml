@@ -1,5 +1,5 @@
 io.rsocket.routing.broker:
-  broker-id: 00000000-0000-0000-0000-000000000011
+#  broker-id: 00000000-0000-0000-0000-000000000011
   tcp.port: 8002
   cluster.port: 7002
 
@@ -22,3 +22,23 @@ io.rsocket.routing.broker:
       proxy:
         host: ${BROKER_HOST:-localhost}
         port: 8002
+---
+spring:
+  profiles: k8s-scaled
+
+io.rsocket.routing.broker:
+  tcp.port: 8002
+  cluster.port: 7002
+  brokers:
+    - proxy:
+        host: ${BROKER_HOST_1}
+        port: 8002
+      cluster:
+        host: ${BROKER_HOST_1}
+        port: 7002
+    - proxy:
+        host: ${BROKER_HOST_2}
+        port: 8002
+      cluster:
+        host: ${BROKER_HOST_2}
+        port: 7002

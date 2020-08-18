@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broker
+  labels:
+    app: broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broker
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: broker
+    spec:
+      containers:
+      - image: ciberkleid/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
+        name: broker
+        resources: {}
+        imagePullPolicy: Always

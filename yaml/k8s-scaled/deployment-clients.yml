@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping
+  labels:
+    app: ping
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ping
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ping
+    spec:
+      containers:
+      - image: ciberkleid/s1p-2020-mesh-rs-ping:0.0.1-SNAPSHOT
+        name: ping
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "k8s-scaled"
+          - name: BROKER_HOST
+            value: "broker"
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+        resources: {}
+        imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pong
+  labels:
+    app: pong
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pong
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: pong
+    spec:
+      containers:
+      - image: ciberkleid/s1p-2020-mesh-rs-pong:0.0.1-SNAPSHOT
+        name: pong
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "k8s-scaled"
+          - name: BROKER_HOST
+            value: "broker"
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+        resources: {}
+        imagePullPolicy: Always

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #git checkout rsocket-routing
-./mvnw clean spring-boot:build-image
+./mvnw clean spring-boot:build-image -DskipTests

@@ -1,5 +1,5 @@
 io.rsocket.routing.client:
-  route-id: 00000000-0000-0000-0000-000000000003
+#  route-id: 00000000-0000-0000-0000-000000000003
   service-name: pong
   tags:
     INSTANCE_NAME: pong3
@@ -34,3 +34,14 @@ io.rsocket.routing.client:
   brokers:
     - host: ${BROKER_HOST:-localhost}
       port: 8003
+---
+spring:
+  profiles: k8s-scaled
+
+io.rsocket.routing.client:
+  service-name: pong
+  tags:
+    INSTANCE_NAME: ${POD_NAME}
+  brokers:
+    - host: ${BROKER_HOST:-broker}
+      port: 8002

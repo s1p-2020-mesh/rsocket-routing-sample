@@ -1,6 +1,6 @@
 #!/bin/bash
 
-registry=ciberkleid
+registry=marygabry1508
 
 declare -a apps=("ping:0.0.1-SNAPSHOT"
                 "pong:0.0.1-SNAPSHOT"
