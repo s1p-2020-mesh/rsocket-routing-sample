@@ -36,12 +36,12 @@ io.rsocket.routing.client:
       port: 8003
 ---
 spring:
-  profiles: k8s-scaled
+  profiles: k8s
 
 io.rsocket.routing.client:
   service-name: pong
   tags:
     INSTANCE_NAME: ${POD_NAME}
   brokers:
-    - host: ${BROKER_HOST:-broker}
+    - host: ${BROKER_HOST}
       port: 8002

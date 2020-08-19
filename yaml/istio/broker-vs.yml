@@ -4,7 +4,7 @@ metadata:
   name: broker
 spec:
   hosts:
-  - "rsocket-broker.marygabry.name"
+  - "rsocket-broker.springone.coraiberkleid.xyz"
   gateways:
   - broker
   tcp:

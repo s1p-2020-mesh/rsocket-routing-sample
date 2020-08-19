@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ping
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: ping
@@ -20,7 +20,7 @@ spec:
         name: ping
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: "k8s-scaled"
+            value: "k8s"
           - name: BROKER_HOST
             value: "broker"
           - name: POD_NAME
@@ -37,7 +37,7 @@ metadata:
   labels:
     app: pong
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: pong
@@ -52,7 +52,7 @@ spec:
         name: pong
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: "k8s-scaled"
+            value: "k8s"
           - name: BROKER_HOST
             value: "broker"
           - name: POD_NAME

@@ -1,31 +1,24 @@
 #!/bin/bash
 
 if [[ $1 == "cora" ]]; then
-
-  sed -i '' 's/marygabry1508/ciberkleid/g' docker-push.sh
-
-  pushd yaml/k8s
-  sed -i '' 's/marygabry1508/ciberkleid/g' *.yml
-  popd
-
-  pushd yaml/istio
-  sed -i '' 's/marygabry1508/ciberkleid/g' *.yml
-  sed -i '' 's/marygabry\.name/springone\.coraiberkleid\.xyz/g' *.yml
-  popd
-
+  FROM_REG=marygabry1508
+  TO_REG=ciberkleid
+  FROM_DMN=marygabry\.name
+  TO_DMN=springone\.coraiberkleid\.xyz
 else
-
-  sed -i '' 's/ciberkleid/marygabry1508/g' docker-push.sh
-
-  pushd yaml/eureka
-  sed -i '' 's/ciberkleid/marygabry1508/g' *.yml
-  popd
-
-  pushd yaml/istio
-  sed -i '' 's/ciberkleid/marygabry1508/g' *.yml
-  sed -i '' 's/springone\.coraiberkleid\.xyz/marygabry\.name/g' *.yml
-  popd
-
+  FROM_REG=ciberkleid
+  TO_REG=marygabry1508
+  FROM_DMN=springone\.coraiberkleid\.xyz
+  TO_DMN=marygabry\.name
 fi
+
+pushd yaml
+find . -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' 's/${FROM_REG}/${TO_REG}/g'
+find . -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' 's/${FROM_DMN}/${TO_DMN}/g'
+popd
+
+sed -i '' 's/marygabry1508/ciberkleid/g' docker-push.sh
+
+
 
 

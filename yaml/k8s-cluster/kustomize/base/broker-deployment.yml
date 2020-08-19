@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broker1
+  name: broker
   labels:
     app: broker
     instance: "1"
@@ -19,14 +19,17 @@ spec:
         instance: "1"
     spec:
       containers:
-      - image: ciberkleid/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
-        name: broker
+      - name: broker
+        image: ciberkleid/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
+        envFrom:
+          - configMapRef:
+              name: broker-list
         env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: "k8s-scaled"
-          - name: BROKER_HOST_1
-            value: broker2-svc
-          - name: BROKER_HOST_2
-            value: broker3-svc
+          - name: CLUSTER_NODE_1
+            value: broker1
+          - name: CLUSTER_NODE_2
+            value: broker2
+          - name: CLUSTER_NODE_3
+            value: broker3
         resources: {}
         imagePullPolicy: Always
