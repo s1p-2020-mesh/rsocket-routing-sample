@@ -12,10 +12,8 @@ else
   TO_DMN=marygabry\.name
 fi
 
-pushd yaml
-find . -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' 's/${FROM_REG}/${TO_REG}/g'
-find . -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' 's/${FROM_DMN}/${TO_DMN}/g'
-popd
+find ./yaml -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' "s/${FROM_REG}/${TO_REG}/g"
+find ./yaml -type f \( -name "*.yaml" -o -name "*.yml" \) -print0 | xargs -0 sed -i '' "s/${FROM_DMN}/${TO_DMN}/g"
 
 sed -i '' 's/marygabry1508/ciberkleid/g' docker-push.sh
 
