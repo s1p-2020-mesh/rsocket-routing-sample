@@ -11,5 +11,5 @@ spec:
       name: http
       protocol: TCP
     hosts:
-    - "rsocket-broker.springone.coraiberkleid.xyz"
+    - "rsocket-broker.marygabry.name"
 

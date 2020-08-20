@@ -20,16 +20,9 @@ spec:
     spec:
       containers:
       - name: broker
-        image: ciberkleid/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
+        image: marygabry1508/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
         envFrom:
           - configMapRef:
               name: broker-list
-        env:
-          - name: CLUSTER_NODE_1
-            value: broker1
-          - name: CLUSTER_NODE_2
-            value: broker2
-          - name: CLUSTER_NODE_3
-            value: broker3
         resources: {}
         imagePullPolicy: Always

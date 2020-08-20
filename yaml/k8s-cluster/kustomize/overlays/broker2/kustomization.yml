@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ../../base/broker-deployment.yml
   - ../../base/broker-service.yml
+patchesStrategicMerge:
+- env_patch.yml
 
 nameSuffix: "2"
 commonLabels:

@@ -16,7 +16,7 @@ spec:
         app: ping
     spec:
       containers:
-      - image: ciberkleid/s1p-2020-mesh-rs-ping:0.0.1-SNAPSHOT
+      - image: marygabry1508/s1p-2020-mesh-rs-ping:0.0.1-SNAPSHOT
         name: ping
         env:
           - name: SPRING_PROFILES_ACTIVE
@@ -48,7 +48,7 @@ spec:
         app: pong
     spec:
       containers:
-      - image: ciberkleid/s1p-2020-mesh-rs-pong:0.0.1-SNAPSHOT
+      - image: marygabry1508/s1p-2020-mesh-rs-pong:0.0.1-SNAPSHOT
         name: pong
         env:
           - name: SPRING_PROFILES_ACTIVE

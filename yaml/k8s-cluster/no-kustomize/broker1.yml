@@ -19,14 +19,12 @@ spec:
         instance: "1"
     spec:
       containers:
-      - image: ciberkleid/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
+      - image: marygabry1508/s1p-2020-mesh-rs-broker:0.0.1-SNAPSHOT
         name: broker
         envFrom:
           - configMapRef:
               name: broker-list
         env:
-#          - name: SPRING_PROFILES_ACTIVE
-#            value: "k8s-scaled"
           - name: CLUSTER_NODE_1
             value: broker2
           - name: CLUSTER_NODE_2
