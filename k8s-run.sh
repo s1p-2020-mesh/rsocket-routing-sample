@@ -1,8 +1,9 @@
 #!/bin/sh
 
-kubectl delete ns rsocket
-kubectl create ns rsocket
-kubectl config set-context $(kubectl config current-context) --namespace=rsocket
+NS=rsocket
+kubectl delete ns $NS
+kubectl create ns $NS
+kubectl config set-context $(kubectl config current-context) --namespace=$NS
 
 
 kubectl apply -f yaml/k8s/deployment-broker.yml

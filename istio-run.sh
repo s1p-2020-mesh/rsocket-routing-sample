@@ -1,9 +1,10 @@
 #!/bin/sh
 
-kubectl delete ns rsocket-istio
-kubectl create ns rsocket-istio
-kubectl label namespace rsocket-istio istio-injection=enabled
-kubectl config set-context $(kubectl config current-context) --namespace=rsocket-istio
+NS=rsocket-istio
+kubectl delete ns $NS
+kubectl create ns $NS
+kubectl label namespace $NS istio-injection=enabled
+kubectl config set-context $(kubectl config current-context) --namespace=$NS
 
 
 kubectl apply -f yaml/istio/
